@@ -20,10 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Result" />
-        <activity
-            android:name=".Beginning"
-            android:label="@string/title_activity_beginning"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

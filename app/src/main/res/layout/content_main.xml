@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:text="answer1"
         android:layout_marginTop="80dp"
-        android:onClick="checkAnswer"/>
+        android:onClick="onClick"/>
 
     <Button
         android:id="@+id/answerBtn2"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="answer2"
         android:layout_marginTop="6dp"
-        android:onClick="checkAnswer"/>
+        android:onClick="onClick"/>
 
     <Button
         android:id="@+id/answerBtn3"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:text="answer3"
         android:layout_marginTop="6dp"
-        android:onClick="checkAnswer"/>
+        android:onClick="onClick"/>
 
     <Button
         android:id="@+id/answerBtn4"
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:text="answer4"
         android:layout_marginTop="6dp"
-        android:onClick="checkAnswer"/>
+        android:onClick="onClick"/>
 
 
 </LinearLayout>

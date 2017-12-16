@@ -14,26 +14,29 @@ public class Result extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-        TextView resultLabel = (TextView) findViewById(R.id.resultLabel);
-        TextView totalScoreLabel = (TextView) findViewById(R.id.totalScoreLabel);
+        TextView txtScore = (TextView) findViewById(R.id.resultLabel);
+        TextView txtHighScore = (TextView) findViewById(R.id.totalScoreLabel);
+        // receive the score from last activity by Intent
+        Intent intent = getIntent();
+        int score = intent.getIntExtra("score", 0);
+        // display current score
+        txtScore.setText("Your score: " + score);
 
-        int score = getIntent().getIntExtra("RIGHT_ANSWER_COUNT", 0);
-
-        SharedPreferences settings = getSharedPreferences("quizApp", Context.MODE_PRIVATE);
-        int totalScore = settings.getInt("totalScore", 0);
-        totalScore += score;
-
-        resultLabel.setText(score + " / 5");
-        totalScoreLabel.setText("Total Score : " + totalScore);
-
-        // Update total score.
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("totalScore", totalScore);
-        editor.commit();
+        // use Shared preferences to save the best score
+        SharedPreferences mypref = getPreferences(MODE_PRIVATE);
+        int highscore = mypref.getInt("highscore", 0);
+        if (highscore >= score)
+            txtHighScore.setText("High score: " + highscore);
+        else {
+            txtHighScore.setText("New highscore: " + score);
+            SharedPreferences.Editor editor = mypref.edit();
+            editor.putInt("highscore", score);
+            editor.commit();
+        }
     }
 
-    public void returnTop(View view) {
-        Intent intent = new Intent(getApplicationContext(), Beginning.class);
+    public void onRepeatClick(View view) {
+        Intent intent = new Intent(Result.this, MainActivity.class);
         startActivity(intent);
     }
 
